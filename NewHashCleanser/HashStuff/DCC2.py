@@ -7,6 +7,7 @@ class DCC2(Hash):
 
     hashes = []
     pattern = r"(\$DCC2\$)(.*)" # DCC2 Regex Pattern
+    userList = []
 
     def Pattern_Parser(list, pattern):
     # This function uses regular expression to fing NTLM or DCC2 hashes and returns the hashes in a list
@@ -123,7 +124,7 @@ class DCC2(Hash):
     def List_Cleanser (hash_list, input):       # might need to make sure that this function can parse NTLM
     # Function to clean a list of dcc2 hashes
         tmp_hashes = []         # temporary placeholder
-        tmp_hashes = DCC2.Pattern_Parser (hash_list, DCC2.pattern_DCC2)
+        tmp_hashes = DCC2.Pattern_Parser (hash_list, DCC2.pattern)
         # go through the list and remove null bytes
         cleaned_hashes = DCC2.Remove_Unwanted_Chars(tmp_hashes)
         # go through list and remove the duplicates
